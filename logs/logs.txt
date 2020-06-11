@@ -1,0 +1,410 @@
+[2020年3月25日15时3分33秒]:src/apserver/src/messageProcess.c[283] : Info: send_to_web:template_report
+
+[2020年3月25日15时3分33秒]:src/apserver/src/messageProcess.c[310] : Info: send_to_web:ap_report
+
+[2020年3月25日15时3分43秒]:src/apserver/src/messageProcess.c[212] : Info: receive AP_APSERVER_REGISTER_REQ_WITH_CONFIGURATION AP=1234567890
+
+[2020年3月25日15时3分43秒]:src/apserver/src/messageProcess.c[214] : Info: send APSERVER_AP_HEART_BEAT AP=1234567890
+
+[2020年3月25日15时3分43秒]:src/apserver/src/messageProcess.c[243] : Info: receive AP_APSERVER_HEART_BEAT_ACK AP=1234567890
+
+[2020年3月25日15时3分45秒]:src/apserver/src/main.c[266] : Info: send APSERVER_AP_HEART_BEAT AP:1234567890
+
+[2020年3月25日15时3分45秒]:src/apserver/src/messageProcess.c[243] : Info: receive AP_APSERVER_HEART_BEAT_ACK AP=1234567890
+
+[2020年3月25日15时3分48秒]:src/apserver/src/main.c[266] : Info: send APSERVER_AP_HEART_BEAT AP:1234567890
+
+[2020年3月25日15时3分48秒]:src/apserver/src/messageProcess.c[243] : Info: receive AP_APSERVER_HEART_BEAT_ACK AP=1234567890
+
+[2020年3月25日15时3分51秒]:src/apserver/src/main.c[266] : Info: send APSERVER_AP_HEART_BEAT AP:1234567890
+
+[2020年3月25日15时3分51秒]:src/apserver/src/messageProcess.c[243] : Info: receive AP_APSERVER_HEART_BEAT_ACK AP=1234567890
+
+[2020年4月7日10时25分21秒]:src/apserver/src/messageProcess.c[283] : Info: send_to_web:template_report
+
+[2020年4月7日10时25分21秒]:src/apserver/src/messageProcess.c[310] : Info: send_to_web:ap_report
+
+[2020年4月7日10时26分11秒]:src/apserver/src/messageProcess.c[212] : Info: receive AP_APSERVER_REGISTER_REQ_WITH_CONFIGURATION AP=1234567890
+
+[2020年4月7日10时26分11秒]:src/apserver/src/messageProcess.c[214] : Info: send APSERVER_AP_HEART_BEAT AP=1234567890
+
+[2020年4月7日10时26分11秒]:src/apserver/src/messageProcess.c[243] : Info: receive AP_APSERVER_HEART_BEAT_ACK AP=1234567890
+
+[2020年4月7日10时26分13秒]:src/apserver/src/main.c[266] : Info: send APSERVER_AP_HEART_BEAT AP:1234567890
+
+[2020年4月7日10时26分13秒]:src/apserver/src/messageProcess.c[243] : Info: receive AP_APSERVER_HEART_BEAT_ACK AP=1234567890
+
+[2020年4月7日10时26分16秒]:src/apserver/src/main.c[266] : Info: send APSERVER_AP_HEART_BEAT AP:1234567890
+
+[2020年4月7日10时26分16秒]:src/apserver/src/messageProcess.c[243] : Info: receive AP_APSERVER_HEART_BEAT_ACK AP=1234567890
+
+[2020年4月7日10时26分19秒]:src/apserver/src/main.c[266] : Info: send APSERVER_AP_HEART_BEAT AP:1234567890
+
+[2020年4月7日10时26分19秒]:src/apserver/src/messageProcess.c[243] : Info: receive AP_APSERVER_HEART_BEAT_ACK AP=1234567890
+
+[2020年4月7日10时26分22秒]:src/apserver/src/main.c[266] : Info: send APSERVER_AP_HEART_BEAT AP:1234567890
+
+[2020年4月7日10时26分22秒]:src/apserver/src/messageProcess.c[243] : Info: receive AP_APSERVER_HEART_BEAT_ACK AP=1234567890
+
+[2020年4月7日10时26分25秒]:src/apserver/src/main.c[266] : Info: send APSERVER_AP_HEART_BEAT AP:1234567890
+
+[2020年4月7日10时26分25秒]:src/apserver/src/messageProcess.c[243] : Info: receive AP_APSERVER_HEART_BEAT_ACK AP=1234567890
+
+[2020年4月7日10时26分28秒]:src/apserver/src/main.c[266] : Info: send APSERVER_AP_HEART_BEAT AP:1234567890
+
+[2020年4月7日10时26分28秒]:src/apserver/src/messageProcess.c[243] : Info: receive AP_APSERVER_HEART_BEAT_ACK AP=1234567890
+
+[2020年4月7日10时26分29秒]:src/apserver/src/main.c[129] : Info: unconfigured AP:1111111111
+
+[2020年4月7日10时26分31秒]:src/apserver/src/main.c[266] : Info: send APSERVER_AP_HEART_BEAT AP:1234567890
+
+[2020年4月7日10时26分31秒]:src/apserver/src/messageProcess.c[243] : Info: receive AP_APSERVER_HEART_BEAT_ACK AP=1234567890
+
+[2020年4月7日10时26分34秒]:src/apserver/src/main.c[266] : Info: send APSERVER_AP_HEART_BEAT AP:1234567890
+
+[2020年4月7日10时26分34秒]:src/apserver/src/messageProcess.c[243] : Info: receive AP_APSERVER_HEART_BEAT_ACK AP=1234567890
+
+[2020年4月7日10时26分37秒]:src/apserver/src/main.c[266] : Info: send APSERVER_AP_HEART_BEAT AP:1234567890
+
+[2020年4月7日10时26分37秒]:src/apserver/src/messageProcess.c[243] : Info: receive AP_APSERVER_HEART_BEAT_ACK AP=1234567890
+
+[2020年4月7日10时26分40秒]:src/apserver/src/main.c[266] : Info: send APSERVER_AP_HEART_BEAT AP:1234567890
+
+[2020年4月7日10时26分40秒]:src/apserver/src/messageProcess.c[243] : Info: receive AP_APSERVER_HEART_BEAT_ACK AP=1234567890
+
+[2020年4月7日10时26分43秒]:src/apserver/src/main.c[266] : Info: send APSERVER_AP_HEART_BEAT AP:1234567890
+
+[2020年4月7日10时26分43秒]:src/apserver/src/messageProcess.c[243] : Info: receive AP_APSERVER_HEART_BEAT_ACK AP=1234567890
+
+[2020年4月7日10时26分46秒]:src/apserver/src/main.c[266] : Info: send APSERVER_AP_HEART_BEAT AP:1234567890
+
+[2020年4月7日10时26分46秒]:src/apserver/src/messageProcess.c[243] : Info: receive AP_APSERVER_HEART_BEAT_ACK AP=1234567890
+
+[2020年4月7日10时26分49秒]:src/apserver/src/main.c[266] : Info: send APSERVER_AP_HEART_BEAT AP:1234567890
+
+[2020年4月7日10时26分49秒]:src/apserver/src/messageProcess.c[243] : Info: receive AP_APSERVER_HEART_BEAT_ACK AP=1234567890
+
+[2020年4月7日10时26分52秒]:src/apserver/src/main.c[266] : Info: send APSERVER_AP_HEART_BEAT AP:1234567890
+
+[2020年4月7日10时26分52秒]:src/apserver/src/messageProcess.c[243] : Info: receive AP_APSERVER_HEART_BEAT_ACK AP=1234567890
+
+[2020年4月7日10时26分55秒]:src/apserver/src/main.c[266] : Info: send APSERVER_AP_HEART_BEAT AP:1234567890
+
+[2020年4月7日10时26分55秒]:src/apserver/src/messageProcess.c[243] : Info: receive AP_APSERVER_HEART_BEAT_ACK AP=1234567890
+
+[2020年4月7日10时26分58秒]:src/apserver/src/main.c[266] : Info: send APSERVER_AP_HEART_BEAT AP:1234567890
+
+[2020年4月7日10时26分58秒]:src/apserver/src/messageProcess.c[243] : Info: receive AP_APSERVER_HEART_BEAT_ACK AP=1234567890
+
+[2020年4月7日10时27分1秒]:src/apserver/src/main.c[266] : Info: send APSERVER_AP_HEART_BEAT AP:1234567890
+
+[2020年4月7日10时27分1秒]:src/apserver/src/messageProcess.c[243] : Info: receive AP_APSERVER_HEART_BEAT_ACK AP=1234567890
+
+[2020年4月7日10时27分4秒]:src/apserver/src/main.c[266] : Info: send APSERVER_AP_HEART_BEAT AP:1234567890
+
+[2020年4月7日10时27分4秒]:src/apserver/src/messageProcess.c[243] : Info: receive AP_APSERVER_HEART_BEAT_ACK AP=1234567890
+
+[2020年4月7日10时27分7秒]:src/apserver/src/main.c[266] : Info: send APSERVER_AP_HEART_BEAT AP:1234567890
+
+[2020年4月7日10时27分7秒]:src/apserver/src/messageProcess.c[243] : Info: receive AP_APSERVER_HEART_BEAT_ACK AP=1234567890
+
+[2020年4月7日10时27分10秒]:src/apserver/src/main.c[266] : Info: send APSERVER_AP_HEART_BEAT AP:1234567890
+
+[2020年4月7日10时27分10秒]:src/apserver/src/messageProcess.c[243] : Info: receive AP_APSERVER_HEART_BEAT_ACK AP=1234567890
+
+[2020年4月7日10时27分13秒]:src/apserver/src/main.c[266] : Info: send APSERVER_AP_HEART_BEAT AP:1234567890
+
+[2020年4月7日10时27分13秒]:src/apserver/src/messageProcess.c[243] : Info: receive AP_APSERVER_HEART_BEAT_ACK AP=1234567890
+
+[2020年4月7日10时27分16秒]:src/apserver/src/main.c[266] : Info: send APSERVER_AP_HEART_BEAT AP:1234567890
+
+[2020年4月7日10时27分16秒]:src/apserver/src/messageProcess.c[243] : Info: receive AP_APSERVER_HEART_BEAT_ACK AP=1234567890
+
+[2020年4月7日10时27分19秒]:src/apserver/src/main.c[266] : Info: send APSERVER_AP_HEART_BEAT AP:1234567890
+
+[2020年4月7日10时27分19秒]:src/apserver/src/messageProcess.c[243] : Info: receive AP_APSERVER_HEART_BEAT_ACK AP=1234567890
+
+[2020年4月7日10时27分22秒]:src/apserver/src/main.c[266] : Info: send APSERVER_AP_HEART_BEAT AP:1234567890
+
+[2020年4月7日10时28分40秒]:src/apserver/src/messageProcess.c[283] : Info: send_to_web:template_report
+
+[2020年4月7日10时28分40秒]:src/apserver/src/messageProcess.c[310] : Info: send_to_web:ap_report
+
+[2020年4月7日10时28分48秒]:src/apserver/src/messageProcess.c[212] : Info: receive AP_APSERVER_REGISTER_REQ_WITH_CONFIGURATION AP=1234567890
+
+[2020年4月7日10时28分48秒]:src/apserver/src/messageProcess.c[214] : Info: send APSERVER_AP_HEART_BEAT AP=1234567890
+
+[2020年4月7日10时28分48秒]:src/apserver/src/messageProcess.c[243] : Info: receive AP_APSERVER_HEART_BEAT_ACK AP=1234567890
+
+[2020年4月7日10时28分51秒]:src/apserver/src/main.c[266] : Info: send APSERVER_AP_HEART_BEAT AP:1234567890
+
+[2020年4月7日10时28分51秒]:src/apserver/src/messageProcess.c[243] : Info: receive AP_APSERVER_HEART_BEAT_ACK AP=1234567890
+
+[2020年4月7日10时28分54秒]:src/apserver/src/main.c[266] : Info: send APSERVER_AP_HEART_BEAT AP:1234567890
+
+[2020年4月7日10时28分54秒]:src/apserver/src/messageProcess.c[243] : Info: receive AP_APSERVER_HEART_BEAT_ACK AP=1234567890
+
+[2020年4月7日10时28分57秒]:src/apserver/src/main.c[266] : Info: send APSERVER_AP_HEART_BEAT AP:1234567890
+
+[2020年4月7日10时28分57秒]:src/apserver/src/messageProcess.c[243] : Info: receive AP_APSERVER_HEART_BEAT_ACK AP=1234567890
+
+[2020年4月7日10时29分0秒]:src/apserver/src/main.c[266] : Info: send APSERVER_AP_HEART_BEAT AP:1234567890
+
+[2020年4月7日10时29分0秒]:src/apserver/src/messageProcess.c[243] : Info: receive AP_APSERVER_HEART_BEAT_ACK AP=1234567890
+
+[2020年4月7日10时29分1秒]:src/apserver/src/messageProcess.c[212] : Info: receive AP_APSERVER_REGISTER_REQ_WITH_CONFIGURATION AP=1111111111
+
+[2020年4月7日10时29分1秒]:src/apserver/src/messageProcess.c[214] : Info: send APSERVER_AP_HEART_BEAT AP=1111111111
+
+[2020年4月7日10时29分1秒]:src/apserver/src/messageProcess.c[243] : Info: receive AP_APSERVER_HEART_BEAT_ACK AP=1111111111
+
+[2020年4月7日10时29分3秒]:src/apserver/src/main.c[266] : Info: send APSERVER_AP_HEART_BEAT AP:1234567890
+
+[2020年4月7日10时29分3秒]:src/apserver/src/messageProcess.c[243] : Info: receive AP_APSERVER_HEART_BEAT_ACK AP=1234567890
+
+[2020年4月7日10时29分4秒]:src/apserver/src/main.c[266] : Info: send APSERVER_AP_HEART_BEAT AP:1111111111
+
+[2020年4月7日10时29分4秒]:src/apserver/src/messageProcess.c[243] : Info: receive AP_APSERVER_HEART_BEAT_ACK AP=1111111111
+
+[2020年4月7日10时29分6秒]:src/apserver/src/main.c[266] : Info: send APSERVER_AP_HEART_BEAT AP:1234567890
+
+[2020年4月7日10时29分6秒]:src/apserver/src/messageProcess.c[243] : Info: receive AP_APSERVER_HEART_BEAT_ACK AP=1234567890
+
+[2020年4月7日10时29分7秒]:src/apserver/src/main.c[266] : Info: send APSERVER_AP_HEART_BEAT AP:1111111111
+
+[2020年4月7日10时29分7秒]:src/apserver/src/messageProcess.c[243] : Info: receive AP_APSERVER_HEART_BEAT_ACK AP=1111111111
+
+[2020年4月7日10时29分9秒]:src/apserver/src/main.c[266] : Info: send APSERVER_AP_HEART_BEAT AP:1234567890
+
+[2020年4月7日10时29分9秒]:src/apserver/src/messageProcess.c[243] : Info: receive AP_APSERVER_HEART_BEAT_ACK AP=1234567890
+
+[2020年4月7日10时29分10秒]:src/apserver/src/main.c[266] : Info: send APSERVER_AP_HEART_BEAT AP:1111111111
+
+[2020年4月7日10时29分10秒]:src/apserver/src/messageProcess.c[243] : Info: receive AP_APSERVER_HEART_BEAT_ACK AP=1111111111
+
+[2020年4月7日10时29分12秒]:src/apserver/src/main.c[266] : Info: send APSERVER_AP_HEART_BEAT AP:1234567890
+
+[2020年4月7日10时29分12秒]:src/apserver/src/messageProcess.c[243] : Info: receive AP_APSERVER_HEART_BEAT_ACK AP=1234567890
+
+[2020年4月7日10时29分13秒]:src/apserver/src/main.c[266] : Info: send APSERVER_AP_HEART_BEAT AP:1111111111
+
+[2020年4月7日10时29分13秒]:src/apserver/src/messageProcess.c[243] : Info: receive AP_APSERVER_HEART_BEAT_ACK AP=1111111111
+
+[2020年4月7日10时29分15秒]:src/apserver/src/main.c[266] : Info: send APSERVER_AP_HEART_BEAT AP:1234567890
+
+[2020年4月7日10时29分15秒]:src/apserver/src/messageProcess.c[243] : Info: receive AP_APSERVER_HEART_BEAT_ACK AP=1234567890
+
+[2020年4月7日10时29分16秒]:src/apserver/src/main.c[266] : Info: send APSERVER_AP_HEART_BEAT AP:1111111111
+
+[2020年4月7日10时29分16秒]:src/apserver/src/messageProcess.c[243] : Info: receive AP_APSERVER_HEART_BEAT_ACK AP=1111111111
+
+[2020年4月7日10时29分18秒]:src/apserver/src/main.c[266] : Info: send APSERVER_AP_HEART_BEAT AP:1234567890
+
+[2020年4月7日10时29分18秒]:src/apserver/src/messageProcess.c[243] : Info: receive AP_APSERVER_HEART_BEAT_ACK AP=1234567890
+
+[2020年4月7日10时29分19秒]:src/apserver/src/main.c[266] : Info: send APSERVER_AP_HEART_BEAT AP:1111111111
+
+[2020年4月7日10时29分19秒]:src/apserver/src/messageProcess.c[243] : Info: receive AP_APSERVER_HEART_BEAT_ACK AP=1111111111
+
+[2020年4月7日10时29分21秒]:src/apserver/src/main.c[266] : Info: send APSERVER_AP_HEART_BEAT AP:1234567890
+
+[2020年4月7日10时29分21秒]:src/apserver/src/messageProcess.c[243] : Info: receive AP_APSERVER_HEART_BEAT_ACK AP=1234567890
+
+[2020年4月7日10时29分22秒]:src/apserver/src/main.c[266] : Info: send APSERVER_AP_HEART_BEAT AP:1111111111
+
+[2020年4月7日10时29分22秒]:src/apserver/src/messageProcess.c[243] : Info: receive AP_APSERVER_HEART_BEAT_ACK AP=1111111111
+
+[2020年4月7日10时29分24秒]:src/apserver/src/main.c[266] : Info: send APSERVER_AP_HEART_BEAT AP:1234567890
+
+[2020年4月7日10时29分25秒]:src/apserver/src/main.c[266] : Info: send APSERVER_AP_HEART_BEAT AP:1111111111
+
+[2020年4月7日15时50分3秒]:src/apserver/src/messageProcess.c[284] : Info: send_to_web:template_report
+
+[2020年4月7日15时50分3秒]:src/apserver/src/messageProcess.c[311] : Info: send_to_web:ap_report
+
+[2020年4月7日15时53分18秒]:src/apserver/src/messageProcess.c[284] : Info: send_to_web:template_report
+
+[2020年4月7日15时53分18秒]:src/apserver/src/messageProcess.c[311] : Info: send_to_web:ap_report
+
+[2020年4月7日16时1分13秒]:src/apserver/src/messageProcess.c[284] : Info: send_to_web:template_report
+
+[2020年4月7日16时1分13秒]:src/apserver/src/messageProcess.c[311] : Info: send_to_web:ap_report
+
+[2020年4月7日16时4分38秒]:src/apserver/src/messageProcess.c[284] : Info: send_to_web:template_report
+
+[2020年4月7日16时4分38秒]:src/apserver/src/messageProcess.c[311] : Info: send_to_web:ap_report
+
+[2020年4月7日16时4分38秒]:src/apserver/src/messageProcess.c[540] : Info: send_to_web:APSERVER_WEB_HEART_BEAT
+
+[2020年4月7日16时4分40秒]:src/apserver/src/messageProcess.c[540] : Info: send_to_web:APSERVER_WEB_HEART_BEAT
+
+[2020年4月7日16时4分43秒]:src/apserver/src/messageProcess.c[540] : Info: send_to_web:APSERVER_WEB_HEART_BEAT
+
+[2020年4月7日16时4分46秒]:src/apserver/src/messageProcess.c[540] : Info: send_to_web:APSERVER_WEB_HEART_BEAT
+
+[2020年4月7日16时4分49秒]:src/apserver/src/messageProcess.c[540] : Info: send_to_web:APSERVER_WEB_HEART_BEAT
+
+[2020年4月7日16时4分52秒]:src/apserver/src/messageProcess.c[540] : Info: send_to_web:APSERVER_WEB_HEART_BEAT
+
+[2020年4月7日16时4分55秒]:src/apserver/src/messageProcess.c[540] : Info: send_to_web:APSERVER_WEB_HEART_BEAT
+
+[2020年4月7日16时4分58秒]:src/apserver/src/messageProcess.c[540] : Info: send_to_web:APSERVER_WEB_HEART_BEAT
+
+[2020年4月7日16时5分1秒]:src/apserver/src/messageProcess.c[540] : Info: send_to_web:APSERVER_WEB_HEART_BEAT
+
+[2020年4月7日16时5分4秒]:src/apserver/src/messageProcess.c[540] : Info: send_to_web:APSERVER_WEB_HEART_BEAT
+
+[2020年4月7日16时8分13秒]:src/apserver/src/messageProcess.c[284] : Info: send_to_web:template_report
+
+[2020年4月7日16时8分13秒]:src/apserver/src/messageProcess.c[311] : Info: send_to_web:ap_report
+
+[2020年4月7日16时8分13秒]:src/apserver/src/messageProcess.c[540] : Info: send_to_web:APSERVER_WEB_HEART_BEAT
+
+[2020年4月7日16时8分15秒]:src/apserver/src/messageProcess.c[540] : Info: send_to_web:APSERVER_WEB_HEART_BEAT
+
+[2020年4月7日16时8分18秒]:src/apserver/src/messageProcess.c[540] : Info: send_to_web:APSERVER_WEB_HEART_BEAT
+
+[2020年4月7日16时8分21秒]:src/apserver/src/messageProcess.c[540] : Info: send_to_web:APSERVER_WEB_HEART_BEAT
+
+[2020年4月7日16时8分24秒]:src/apserver/src/messageProcess.c[540] : Info: send_to_web:APSERVER_WEB_HEART_BEAT
+
+[2020年4月7日16时8分27秒]:src/apserver/src/messageProcess.c[540] : Info: send_to_web:APSERVER_WEB_HEART_BEAT
+
+[2020年4月7日16时8分30秒]:src/apserver/src/messageProcess.c[540] : Info: send_to_web:APSERVER_WEB_HEART_BEAT
+
+[2020年4月7日16时8分33秒]:src/apserver/src/messageProcess.c[540] : Info: send_to_web:APSERVER_WEB_HEART_BEAT
+
+[2020年4月7日16时8分36秒]:src/apserver/src/messageProcess.c[540] : Info: send_to_web:APSERVER_WEB_HEART_BEAT
+
+[2020年4月7日16时8分39秒]:src/apserver/src/messageProcess.c[540] : Info: send_to_web:APSERVER_WEB_HEART_BEAT
+
+[2020年4月7日16时8分42秒]:src/apserver/src/messageProcess.c[540] : Info: send_to_web:APSERVER_WEB_HEART_BEAT
+
+[2020年4月7日16时8分45秒]:src/apserver/src/messageProcess.c[540] : Info: send_to_web:APSERVER_WEB_HEART_BEAT
+
+[2020年4月7日16时8分48秒]:src/apserver/src/messageProcess.c[540] : Info: send_to_web:APSERVER_WEB_HEART_BEAT
+
+[2020年4月7日16时8分51秒]:src/apserver/src/messageProcess.c[540] : Info: send_to_web:APSERVER_WEB_HEART_BEAT
+
+[2020年4月7日16时8分54秒]:src/apserver/src/messageProcess.c[540] : Info: send_to_web:APSERVER_WEB_HEART_BEAT
+
+[2020年4月7日16时8分57秒]:src/apserver/src/messageProcess.c[540] : Info: send_to_web:APSERVER_WEB_HEART_BEAT
+
+[2020年4月7日16时9分0秒]:src/apserver/src/messageProcess.c[540] : Info: send_to_web:APSERVER_WEB_HEART_BEAT
+
+[2020年4月7日16时9分3秒]:src/apserver/src/messageProcess.c[540] : Info: send_to_web:APSERVER_WEB_HEART_BEAT
+
+[2020年4月7日16时9分6秒]:src/apserver/src/messageProcess.c[540] : Info: send_to_web:APSERVER_WEB_HEART_BEAT
+
+[2020年4月7日16时9分9秒]:src/apserver/src/messageProcess.c[540] : Info: send_to_web:APSERVER_WEB_HEART_BEAT
+
+[2020年4月7日16时9分12秒]:src/apserver/src/messageProcess.c[540] : Info: send_to_web:APSERVER_WEB_HEART_BEAT
+
+[2020年4月7日16时9分15秒]:src/apserver/src/messageProcess.c[540] : Info: send_to_web:APSERVER_WEB_HEART_BEAT
+
+[2020年4月7日16时9分18秒]:src/apserver/src/messageProcess.c[540] : Info: send_to_web:APSERVER_WEB_HEART_BEAT
+
+[2020年4月7日16时9分21秒]:src/apserver/src/messageProcess.c[540] : Info: send_to_web:APSERVER_WEB_HEART_BEAT
+
+[2020年4月7日16时9分24秒]:src/apserver/src/messageProcess.c[540] : Info: send_to_web:APSERVER_WEB_HEART_BEAT
+
+[2020年4月7日16时9分27秒]:src/apserver/src/messageProcess.c[540] : Info: send_to_web:APSERVER_WEB_HEART_BEAT
+
+[2020年4月7日16时9分30秒]:src/apserver/src/messageProcess.c[540] : Info: send_to_web:APSERVER_WEB_HEART_BEAT
+
+[2020年4月7日16时9分33秒]:src/apserver/src/messageProcess.c[540] : Info: send_to_web:APSERVER_WEB_HEART_BEAT
+
+[2020年4月7日16时9分36秒]:src/apserver/src/messageProcess.c[540] : Info: send_to_web:APSERVER_WEB_HEART_BEAT
+
+[2020年4月7日16时9分39秒]:src/apserver/src/messageProcess.c[540] : Info: send_to_web:APSERVER_WEB_HEART_BEAT
+
+[2020年4月7日16时9分42秒]:src/apserver/src/messageProcess.c[540] : Info: send_to_web:APSERVER_WEB_HEART_BEAT
+
+[2020年4月7日16时9分45秒]:src/apserver/src/messageProcess.c[540] : Info: send_to_web:APSERVER_WEB_HEART_BEAT
+
+[2020年4月7日16时9分48秒]:src/apserver/src/messageProcess.c[540] : Info: send_to_web:APSERVER_WEB_HEART_BEAT
+
+[2020年4月7日16时9分51秒]:src/apserver/src/messageProcess.c[540] : Info: send_to_web:APSERVER_WEB_HEART_BEAT
+
+[2020年4月7日16时9分54秒]:src/apserver/src/messageProcess.c[540] : Info: send_to_web:APSERVER_WEB_HEART_BEAT
+
+[2020年4月7日16时9分57秒]:src/apserver/src/messageProcess.c[540] : Info: send_to_web:APSERVER_WEB_HEART_BEAT
+
+[2020年4月7日16时10分0秒]:src/apserver/src/messageProcess.c[540] : Info: send_to_web:APSERVER_WEB_HEART_BEAT
+
+[2020年4月7日16时10分3秒]:src/apserver/src/messageProcess.c[540] : Info: send_to_web:APSERVER_WEB_HEART_BEAT
+
+[2020年4月7日16时10分6秒]:src/apserver/src/messageProcess.c[540] : Info: send_to_web:APSERVER_WEB_HEART_BEAT
+
+[2020年4月7日16时10分9秒]:src/apserver/src/messageProcess.c[540] : Info: send_to_web:APSERVER_WEB_HEART_BEAT
+
+[2020年4月7日16时10分32秒]:src/apserver/src/messageProcess.c[284] : Info: send_to_web:template_report
+
+[2020年4月7日16时10分32秒]:src/apserver/src/messageProcess.c[311] : Info: send_to_web:ap_report
+
+[2020年4月7日16时10分32秒]:src/apserver/src/messageProcess.c[540] : Info: send_to_web:APSERVER_WEB_HEART_BEAT
+
+[2020年4月7日16时10分34秒]:src/apserver/src/messageProcess.c[540] : Info: send_to_web:APSERVER_WEB_HEART_BEAT
+
+[2020年4月7日16时10分37秒]:src/apserver/src/messageProcess.c[540] : Info: send_to_web:APSERVER_WEB_HEART_BEAT
+
+[2020年4月7日16时10分40秒]:src/apserver/src/messageProcess.c[540] : Info: send_to_web:APSERVER_WEB_HEART_BEAT
+
+[2020年4月7日16时10分43秒]:src/apserver/src/messageProcess.c[540] : Info: send_to_web:APSERVER_WEB_HEART_BEAT
+
+[2020年4月7日16时10分46秒]:src/apserver/src/messageProcess.c[540] : Info: send_to_web:APSERVER_WEB_HEART_BEAT
+
+[2020年4月7日16时10分49秒]:src/apserver/src/messageProcess.c[540] : Info: send_to_web:APSERVER_WEB_HEART_BEAT
+
+[2020年4月7日16时10分52秒]:src/apserver/src/messageProcess.c[540] : Info: send_to_web:APSERVER_WEB_HEART_BEAT
+
+[2020年4月7日16时10分55秒]:src/apserver/src/messageProcess.c[540] : Info: send_to_web:APSERVER_WEB_HEART_BEAT
+
+[2020年4月7日16时10分58秒]:src/apserver/src/messageProcess.c[540] : Info: send_to_web:APSERVER_WEB_HEART_BEAT
+
+[2020年4月7日16时11分1秒]:src/apserver/src/messageProcess.c[540] : Info: send_to_web:APSERVER_WEB_HEART_BEAT
+
+[2020年4月7日16时11分4秒]:src/apserver/src/messageProcess.c[540] : Info: send_to_web:APSERVER_WEB_HEART_BEAT
+
+[2020年4月7日16时11分7秒]:src/apserver/src/messageProcess.c[540] : Info: send_to_web:APSERVER_WEB_HEART_BEAT
+
+[2020年4月7日16时11分10秒]:src/apserver/src/messageProcess.c[540] : Info: send_to_web:APSERVER_WEB_HEART_BEAT
+
+[2020年4月7日16时11分13秒]:src/apserver/src/messageProcess.c[540] : Info: send_to_web:APSERVER_WEB_HEART_BEAT
+
+[2020年4月7日16时11分16秒]:src/apserver/src/messageProcess.c[540] : Info: send_to_web:APSERVER_WEB_HEART_BEAT
+
+[2020年4月7日16时11分19秒]:src/apserver/src/messageProcess.c[540] : Info: send_to_web:APSERVER_WEB_HEART_BEAT
+
+[2020年4月7日16时11分22秒]:src/apserver/src/messageProcess.c[540] : Info: send_to_web:APSERVER_WEB_HEART_BEAT
+
+[2020年4月7日16时11分25秒]:src/apserver/src/messageProcess.c[540] : Info: send_to_web:APSERVER_WEB_HEART_BEAT
+
+[2020年4月7日16时11分28秒]:src/apserver/src/messageProcess.c[540] : Info: send_to_web:APSERVER_WEB_HEART_BEAT
+
+[2020年4月7日16时11分31秒]:src/apserver/src/messageProcess.c[540] : Info: send_to_web:APSERVER_WEB_HEART_BEAT
+
+[2020年4月7日16时11分34秒]:src/apserver/src/messageProcess.c[540] : Info: send_to_web:APSERVER_WEB_HEART_BEAT
+
+[2020年4月7日16时11分37秒]:src/apserver/src/messageProcess.c[540] : Info: send_to_web:APSERVER_WEB_HEART_BEAT
+
+[2020年4月7日16时11分40秒]:src/apserver/src/messageProcess.c[540] : Info: send_to_web:APSERVER_WEB_HEART_BEAT
+
+[2020年4月7日16时11分43秒]:src/apserver/src/messageProcess.c[540] : Info: send_to_web:APSERVER_WEB_HEART_BEAT
+
+[2020年4月7日16时11分46秒]:src/apserver/src/messageProcess.c[540] : Info: send_to_web:APSERVER_WEB_HEART_BEAT
+
+[2020年4月7日16时11分49秒]:src/apserver/src/messageProcess.c[540] : Info: send_to_web:APSERVER_WEB_HEART_BEAT
+
+[2020年4月7日16时11分52秒]:src/apserver/src/messageProcess.c[540] : Info: send_to_web:APSERVER_WEB_HEART_BEAT
+
+[2020年4月7日16时11分55秒]:src/apserver/src/messageProcess.c[540] : Info: send_to_web:APSERVER_WEB_HEART_BEAT
+
+[2020年4月21日10时14分50秒]:src/apserver/src/messageProcess.c[284] : Info: send_to_web:template_report
+
+[2020年4月21日10时14分50秒]:src/apserver/src/messageProcess.c[311] : Info: send_to_web:ap_report
+
+[2020年4月21日10时15分15秒]:src/apserver/src/messageProcess.c[284] : Info: send_to_web:template_report
+
+[2020年4月21日10时15分15秒]:src/apserver/src/messageProcess.c[311] : Info: send_to_web:ap_report
+
