@@ -48,6 +48,7 @@
 #define web_apServer_heart_time 3
 #define web_apServer_configure_time 4*web_apServer_heart_time
 #define web_apServer_heart_out_time 3*web_apServer_heart_time
+#define web_apServer_upgrade_time 25*web_apServer_heart_time
 
 
 //状态
@@ -55,6 +56,8 @@
 #define WEB_APSERVER_CONNECTING 1
 #define WEB_APSERVER_ON 2
 #define WEB_APSERVER_CONFIGURING 3
+#define WEB_APSERVER_SoftWare_Upgrade 4
+#define WEB_APSERVER_Request_LogInfo  5
 
 
 #define AP_OFF_LINE 0
@@ -67,6 +70,16 @@
 
 
 
+//软件升级结果
+#define SoftWare_Upgrade_OK       1
+#define SoftWare_Upgrade_NOK      2
+#define SoftWare_Upgrade_TIMEOUT  3
+
+//请求日志结果
+#define Request_LogInfo_OK       1
+#define Request_LogInfo_NOK      2
+#define Request_LogInfo_TIMEOUT  3
+
 //消息
 
 
@@ -76,7 +89,9 @@
 #define APSERVER_WEB_AP_MODIFY           3
 #define APSERVER_WEB_AP_CONFIGURE        4
 #define APSERVER_WEB_HEART_BEAT          5
-
+#define APSERVER_WEB_SoftWare_Upgrade    6  //软件升级
+#define APSERVER_WEB_Request_LogInfo     7  //请求日志
+//加一个命令定义
 #define TRUE	1
 #define FALSE	0
 
@@ -174,7 +189,11 @@ typedef struct
 	gateway ap_gateway;
 	struct in_addr AP_Server_IP;
 	unsigned char options;
-}AP_Configuration_template;
+	char Scp_Username[50];//用户名
+	char  Scp_PassWord[20];    //密码
+	char Remote_FilePath[50]; //远程路径
+	char version[version_length];
+}AP_Configuration_template;//netmask template模板数据结构//也需要修改
 
 typedef struct
 {
@@ -221,7 +240,14 @@ typedef struct
 	char AP_SN[APSN_length];
 }legalAP_operation_ack;
 
-
+typedef struct
+{
+	char ack;//0:add  1:del  2:modify  
+	char AP_SN[APSN_length];
+	char   Scp_Username[50];//用户名
+	char  Scp_PassWord[20];    //密码
+	char Remote_FilePath[50]; //远程路径
+}AP_upgrade_ack;
 typedef struct
 {
 	char ack; //0:ok,1:nok,2:timeout    

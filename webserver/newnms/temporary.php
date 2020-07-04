@@ -130,6 +130,7 @@ td {text-align: center;}
         <table id="customers">
             <tr>  
          	<th>操作</th>
+                <th>id</th>
                 <th>SSID_name</th>
                 <th>SSID_psw</th>
 		<th>login_name</th>
@@ -165,10 +166,9 @@ td {text-align: center;}
                 while($row = mysqli_fetch_array($result)){
 					echo "<tr>";
                     echo "<td>
-                            <a href='javascript:del({$row['SSID_name']})'>删除</a>
-                            <a href='javascript:edi({$row['SSID_name']})'>修改</a>
+                            <a href='javascript:edi({$row['id']})'>修改</a>
                         </td>";
-					echo "<td>".$row["SSID_name"]."</td><td>".$row["SSID_psw"]."</td><td>".$row["login_name"]."</td><td>".$row["login_psw"]."</td><td>".$row["NATorBride"]."</td><td>".$row["pool_start"]."</td><td>".$row["pool_end"]."</td><td>".$row["dhcporstatic"]."</td><td>".$row["ip_adress"]."</td><td>".$row["netmask"]."</td><td>".$row["gateway"]."</td><td>".$row["Apserver_IP"]."</td>";
+					echo "<td>".$row["id"]."</td><td>".$row["SSID_name"]."</td><td>".$row["SSID_psw"]."</td><td>".$row["login_name"]."</td><td>".$row["login_psw"]."</td><td>".$row["NATorBride"]."</td><td>".$row["pool_start"]."</td><td>".$row["pool_end"]."</td><td>".$row["dhcporstatic"]."</td><td>".$row["ip_adress"]."</td><td>".$row["netmask"]."</td><td>".$row["gateway"]."</td><td>".$row["Apserver_IP"]."</td>";
 
                     echo "</tr>";
                 }
@@ -180,15 +180,15 @@ td {text-align: center;}
     </div>
     
     <script type="text/javascript">
-        function del(SSID_name){
+        function del(id){
 		    if (confirm("确定删除这个用户吗？")){
           
-                window.location = "deltemporary.php?SSID_name="+SSID_name;
+                window.location = "deltemporary.php?id="+id;
             }
         }
-		function edi(SSID_name){
+		function edi(id){
 			if (confirm("确定修改这个用户吗？")){
-				window.location = "edittemporary.php?SSID_name="+SSID_name;
+				window.location = "edittemporary.php?id="+id;
 			}
 		}
     </script>

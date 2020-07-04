@@ -11,14 +11,15 @@
     $link = mysqli_connect("localhost","root","xlh123xlh","nmsdatabase")  or die("提示：数据库连接失败！".mysqli_error());
     mysqli_select_db($link,"temporary");
     mysqli_set_charset($link,'utf8');
-    $SSID_name = $_GET['SSID_name'];
+    $id = $_GET['id'];
 	
-    $sql = mysqli_query($link,"SELECT * FROM temporary WHERE SSID_name={$SSID_name} ");
+    $sql = mysqli_query($link,"SELECT * FROM temporary WHERE id={$id}");
     $sql_arr = mysqli_fetch_array($sql); 
 
  
 ?>
 <form action="action-edittemporary.php" method="post">
+    <label>id：</label><input type="text" name="id" value="<?php echo $sql_arr['id']?>">
     <label>SSID_name：</label><input type="text" name="SSID_name" value="<?php echo $sql_arr['SSID_name']?>">
     <label>SSID_psw：</label><input type="text" name="SSID_psw" value="<?php echo $sql_arr['SSID_psw']?>">
     <label>login_name: </label><input type="text" name="login_name" value="<?php echo $sql_arr['login_name']?>">

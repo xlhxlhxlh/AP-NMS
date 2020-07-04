@@ -24,6 +24,7 @@ extern APServer_timer legalAPServerTimer[max_ap_server];
 
 extern template_operation_ack Template_Ack[max_template];
 extern legalAP_operation_ack legalAP_Ack[max_ap];
+extern AP_upgrade_ack legalAP_upgrade_Ack[max_ap];
 extern AP_configuration_ack AP_Configure_Ack[max_ap];
 
 
@@ -166,8 +167,10 @@ int control_command_to_APserver()//读取Control表的命令，进行解析判�
 	template_operation_req template_req[max_template];
 	legalAP_operation_req  legalAP_req[256];
 	AP_Configuration_template ap_template[256];
+	char username[50] = "root@192.168.0.96";
+	char pwd[20] = "xlh";
 	int size =-1;
-	int i=0,k = 0,j=0;
+	int i=0,k = 0,j=0,t=0;
 	int obj=-1;
 	int index=-1;
 	int operation=-1;
@@ -177,6 +180,8 @@ int control_command_to_APserver()//读取Control表的命令，进行解析判�
 	char input[15][30];
 	//char a = 'a';
 	char* pn = NULL;
+	char* tn = NULL;
+	char *gn = NULL;
 	ret = mysql_query(conn, "select * from control where state = 0");
 	if (ret != 0) {
 		printf("mysql_select error: %s\n", mysql_error(&mysql));
@@ -389,7 +394,7 @@ int control_command_to_APserver()//读取Control表的命令，进行解析判�
 							(&legalAP_req[i])->ap_template.ap_gateway.subnetmask.s_addr = inet_addr(&row1[18][0]);
 							for (index = 0; index < max_ap_server; index++)//找出AP的序列号
 							{
-								send_to_apServer(index, command, NULL, NULL, &legalAP_req[i], 1, NULL);
+								send_to_apServer(index, command, NULL, NULL, &legalAP_req[i], 1, NULL);//调用Socket，将数据发送到ap_server
 							}
 							printf("AP_Server的IP为：%s\n", &row1[12][0]);
 							update_legalAP_add(&legalAP_req[i]);
@@ -554,10 +559,144 @@ int control_command_to_APserver()//读取Control表的命令，进行解析判�
 				memset(input, 0, sizeof(input));
 				mysql_free_result(result1);
 				break;
+			case update_status:
+				
+				switch (operation)
+				{
+					case add:
+					//template_ID	SSID_name	SSID_psw	Login_name	Login_psw	NatOrBridge	pool_start	pool_end	DhcpOrStatic	ip_address	gateway	APServer_IP
+					pn = strtok(&row[6][0], ",");
+					command = APSERVER_WEB_SoftWare_Upgrade;
+					while (pn)
+					{
+						strcpy(&input[k][0], pn);
+						pn = strtok(NULL, ",");
+						k++;
+					}
+					t = k - 1;
+					strcpy(tn, &input[t][0]);
+					t = t - 1;
+					strcpy(gn, &input[t][0]);
+					for (j = 0; j < t; j++)
+					{
+						strcat(res, "'");
+						strcat(res, &input[j][0]);
+						strcat(res, "'");
+						strcat(res, ",");
+					}
+					res[strlen(res) - 1] = '\0';
+					snprintf(sql_insert, 512, "select * from AP where serials_ID in (%s)", res);
+					mysql_query(conn, sql_insert);
+					result1 = mysql_store_result(&mysql);
+					if (result1 == NULL)
+					{
+						printf("mysql_store_result error_362: %s\n", mysql_error(&mysql));
+					}
+					else
+					{
+						printf("sql_insert is_376:%s\n", sql_insert);
+						row1 = mysql_fetch_row(result1);
+						while (size)
+						{
+							(&legalAP_req[i])->command = APSERVER_WEB_SoftWare_Upgrade;
+							strcpy((&legalAP_req[i])->AP_SN, &row1[0][0]);
+							(&legalAP_req[i])->ap_template.templateIndex = atoi(&row1[1][0]);
+							strcpy((&legalAP_req[i])->ap_template.ap_ssid.ssid, &row1[2][0]);
+							strcpy((&legalAP_req[i])->ap_template.ap_ssid.ssid_psw, &row1[3][0]);
+							strcpy((&legalAP_req[i])->ap_template.ap_login.login, &row1[4][0]);
+							strcpy((&legalAP_req[i])->ap_template.ap_login.login_psw, &row1[5][0]);
+							(&legalAP_req[i])->ap_template.NatOrBridge = atoi(&row1[6][0]);
+							(&legalAP_req[i])->ap_template.pool.start.s_addr = inet_addr(&row1[7][0]);
+							(&legalAP_req[i])->ap_template.pool.end.s_addr = inet_addr(&row1[8][0]);
+							(&legalAP_req[i])->ap_template.DHCPOrStatic = atoi(&row1[9][0]);
+							(&legalAP_req[i])->ap_template.AP_IP.s_addr = inet_addr(&row1[10][0]);
+							(&legalAP_req[i])->ap_template.ap_gateway.gateway.s_addr = inet_addr(&row1[11][0]);
+							(&legalAP_req[i])->ap_template.AP_Server_IP.s_addr = inet_addr(&row1[12][0]);
+							(&legalAP_req[i])->ap_template.ap_gateway.subnetmask.s_addr = inet_addr(&row1[18][0]);
+							strcpy((&legalAP_req[i])->ap_template.Scp_Username, username);
+							strcpy((&legalAP_req[i])->ap_template.Scp_PassWord, pwd);
+							strcpy((&legalAP_req[i])->ap_template.Remote_FilePath, tn);
+							strcpy((&legalAP_req[i])->ap_template.version, gn);
+							//添加三个尾路径
+							for (index = 0; index < max_ap_server; index++)//找出AP的序列号
+							{
+								send_to_apServer(index, command, NULL, NULL, &legalAP_req[i], 1, NULL);//调用Socket，将数据发送到ap_server
+							}
+							printf("AP_Server的IP为：%s\n", &row1[12][0]);
+							update_legalAP_add(&legalAP_req[i]);
+							row1 = mysql_fetch_row(result1);
+							size--; i++;
+						}
+					}
+					mysql_free_result(result1);
+					break;
+					//send_to_apServer(int apServerIndex, int command, AP_Configuration_template * tempTemplate, template_operation_req * templateOperation, legalAP_operation_req * APOperation, int size, char** apConfiguredList)
+				case del:
+					pn = strtok(&row[6][0], ",");
+					command = APSERVER_WEB_Request_LogInfo;
+					while (pn)
+					{
+						strcpy(&input[k][0], pn);
+						pn = strtok(NULL, ",");
+						k++;
+					}
+
+					for (j = 0; j < k; j++)
+					{
+						strcat(res, "'");
+						strcat(res, &input[j][0]);
+						strcat(res, "'");
+						strcat(res, ",");
+					}
+					res[strlen(res) - 1] = '\0';
+					snprintf(sql_insert, 512, "select * from AP where serials_ID in (%s)", res);
+					mysql_query(conn, sql_insert);
+					result1 = mysql_store_result(&mysql);
+					if (result1 == NULL)
+					{
+						printf("mysql_store_result error_362: %s\n", mysql_error(&mysql));
+					}
+					else
+					{
+						printf("sql_insert is_376:%s\n", sql_insert);
+						row1 = mysql_fetch_row(result1);
+						while (size)
+						{
+							(&legalAP_req[i])->command = APSERVER_WEB_Request_LogInfo;
+							strcpy((&legalAP_req[i])->AP_SN, &row1[0][0]);
+							(&legalAP_req[i])->ap_template.templateIndex = atoi(&row1[1][0]);
+							strcpy((&legalAP_req[i])->ap_template.ap_ssid.ssid, &row1[2][0]);
+							strcpy((&legalAP_req[i])->ap_template.ap_ssid.ssid_psw, &row1[3][0]);
+							strcpy((&legalAP_req[i])->ap_template.ap_login.login, &row1[4][0]);
+							strcpy((&legalAP_req[i])->ap_template.ap_login.login_psw, &row1[5][0]);
+							(&legalAP_req[i])->ap_template.NatOrBridge = atoi(&row1[6][0]);
+							(&legalAP_req[i])->ap_template.pool.start.s_addr = inet_addr(&row1[7][0]);
+							(&legalAP_req[i])->ap_template.pool.end.s_addr = inet_addr(&row1[8][0]);
+							(&legalAP_req[i])->ap_template.DHCPOrStatic = atoi(&row1[9][0]);
+							(&legalAP_req[i])->ap_template.AP_IP.s_addr = inet_addr(&row1[10][0]);
+							(&legalAP_req[i])->ap_template.ap_gateway.gateway.s_addr = inet_addr(&row1[11][0]);
+							(&legalAP_req[i])->ap_template.AP_Server_IP.s_addr = inet_addr(&row1[12][0]);
+							(&legalAP_req[i])->ap_template.ap_gateway.subnetmask.s_addr = inet_addr(&row1[18][0]);
+
+							//添加三个尾路径
+							for (index = 0; index < max_ap_server; index++)//找出AP的序列号
+							{
+								send_to_apServer(index, command, NULL, NULL, &legalAP_req[i], 1, NULL);//调用Socket，将数据发送到ap_server
+							}
+							printf("AP_Server的IP为：%s\n", &row1[12][0]);
+							update_legalAP_add(&legalAP_req[i]);
+							row1 = mysql_fetch_row(result1);
+							size--; i++;
+						}
+					}
+				}
+				    memset(input, 0, sizeof(input));
+					mysql_free_result(result1);
+					break;
 			default:
 				printf("undefined command AP Server to AP\n");
 			}
-		}
+		}//加一个大的case代表升级未修改完。
 	}
 	ret = mysql_query(conn, "update control set state = 1 where state = 0");
 	if (ret != 0) 
@@ -569,11 +708,12 @@ int control_command_to_APserver()//读取Control表的命令，进行解析判�
 	return ret;
 }
 
+
 //调用Socket，将数据发送到ap_server
 void send_to_apServer(int apServerIndex, int command, AP_Configuration_template* tempTemplate, template_operation_req* templateOperation, legalAP_operation_req* APOperation, int size, char* apConfiguredList)
 {
 	int i = 0;
-	char sendbuf[sizeof(AP) + 100];    //申请一个发送数据缓存区
+	char sendbuf[sizeof(AP) + 100];    //申请一个发送数据缓存区   模板数据结构            配置模板数据结构
 	char* p = sendbuf;
 
 	*p = command;
@@ -583,7 +723,7 @@ void send_to_apServer(int apServerIndex, int command, AP_Configuration_template*
 
 	switch (command)
 	{
-	case APSERVER_WEB_TEMPLATE_REPORT:
+	case APSERVER_WEB_TEMPLATE_REPORT:     //10
 		size=0;
 		for(i=0;i<max_template;i++)
 		{
@@ -630,13 +770,24 @@ void send_to_apServer(int apServerIndex, int command, AP_Configuration_template*
 	case APSERVER_WEB_HEART_BEAT:
 		sendto(sockSer, sendbuf, 2, 0, (struct sockaddr*) & apServer_socket_list[apServerIndex].addrAP, apServer_socket_list[apServerIndex].addrlen);
 		break;
-
+	case APSERVER_WEB_SoftWare_Upgrade:
+		for (i = 0; i < size; i++)
+			memcpy(p + sizeof(legalAP_operation_req) * i, APOperation + i, sizeof(legalAP_operation_req));
+		sendbuf[1]=size;
+		sendto(sockSer, sendbuf, size * sizeof(legalAP_operation_req) + 2, 0, (struct sockaddr*) & apServer_socket_list[apServerIndex].addrAP, apServer_socket_list[apServerIndex].addrlen);
+		break;
+	case APSERVER_WEB_Request_LogInfo:
+		for (i = 0; i < size; i++)
+			memcpy(p + sizeof(legalAP_operation_req) * i, APOperation + i, sizeof(legalAP_operation_req));
+		sendbuf[1]=size;
+		sendto(sockSer, sendbuf, size * sizeof(legalAP_operation_req) + 2, 0, (struct sockaddr*) & apServer_socket_list[apServerIndex].addrAP, apServer_socket_list[apServerIndex].addrlen);
+		break;
 	default:
 		printf("undefined command AP Server to AP");
 	}
 
 
-}
+}//这也要修改加case
 
 int LegalAPServer_find(struct      sockaddr_in* apserver_socket_addr)//查找ap_sever的序列号
 {
@@ -666,8 +817,16 @@ void ap_modify_report_assign_value(legalAP_operation_ack* destination, legalAP_o
 	destination->ack = source->ack;
 	strcpy(destination->AP_SN, source->AP_SN);
 }
+void ap_upgrade_report_assign_value(AP_upgrade_ack* destination, AP_upgrade_ack* source)//ack的赋值
+{
+	destination->ack = source->ack;
+	strcpy(destination->AP_SN, source->AP_SN);
+	strcpy(destination->Scp_Username, source->Scp_Username);
+	strcpy(destination->Scp_PassWord, source->Scp_PassWord);
+	strcpy(destination->Remote_FilePath, source->Remote_FilePath);	
+}
 
-void ap_configure_report_assign_value(AP_configuration_ack* destination,AP_configuration_ack* source)//配置赋值
+void ap_configure_report_assign_value(AP_configuration_ack* destination,AP_configuration_ack* source)//配置赋值 把source的东西付给destination
 {
 	destination->ack = source->ack;
 	strcpy(destination->AP_SN, source->AP_SN);
@@ -696,6 +855,9 @@ void ap_configure_assign_value(AP* destination,AP* source)
 	destination->configure.AP_IP = source->configure.AP_IP;
 	destination->configure.AP_Server_IP = source->configure.AP_Server_IP;
 	destination->configure.options = source->configure.options;
+	strcpy(destination->configure.Scp_Username, source->configure.Scp_Username);
+	strcpy(destination->configure.Scp_PassWord, source->configure.Scp_PassWord);
+    strcpy(destination->configure.Remote_FilePath, source->configure.Remote_FilePath);	
 }
 
 
@@ -715,7 +877,10 @@ void template_assign_value(AP_Configuration_template* destination,AP_Configurati
 	destination->AP_IP = source->AP_IP;
 	destination->AP_Server_IP = source->AP_Server_IP;
 	destination->options = source->options;
-}
+	strcpy(destination->Scp_Username, source->Scp_Username);
+	strcpy(destination->Scp_PassWord, source->Scp_PassWord);
+    stpcpy(destination->Remote_FilePath, source->Remote_FilePath);	
+}//修改完成
 
 
 void ap_status_assign_value(AP* destination,AP* source)//status 的赋值
@@ -783,7 +948,7 @@ void decode_ap_status_reporter(char* buf,AP* temp)//解析apserver发送过来�
 	}
 }
 
-void decode_ap_modify_report(char* buf)//解析apserver发送过来的更改ap确认信息
+void decode_ap_modify_report(char* buf)//解析apserver发送过来的更改ap确认信息 修改过
 {
 	int i=0,size=buf[1];
 	char* p=buf;
@@ -792,6 +957,17 @@ void decode_ap_modify_report(char* buf)//解析apserver发送过来的更改ap�
 	for(i=0;i<size;i++)
 		{
 		ap_modify_report_assign_value(&legalAP_Ack[i],pp+i);
+		}
+}
+void decode_ap_upgrade_report(char* buf)//解析apserver发送过来的更改ap确认信息 修改过
+{
+	int i=0,size=buf[1];
+	char* p=buf;
+	p++;p++;
+	AP_upgrade_ack* pp=(AP_upgrade_ack*)p;
+	for(i=0;i<size;i++)
+		{
+		ap_upgrade_report_assign_value(&legalAP_upgrade_Ack[i],pp+i);
 		}
 }
 
@@ -805,13 +981,17 @@ void decode_ap_configure_report(char* buf)//解析apserver发送过来的配置�
 		{
 		ap_configure_report_assign_value(&AP_Configure_Ack[i],pp+i);
 		}
-}
+}//也要添加一个类似的函数
 
 
 void  dispatch_APServerMsg(int apServer_index, char* buf)//处理apserver 发送过来的信息，将结果写入数据库
 {
 	//AP* pp=(AP*)(buf+1);
-	char temp[50];
+	char s[100] = "\0";
+	char str[10] = ",";
+	char temp[500] ;
+	char temp1[5000];
+	char *p1,*p2,*p3,*p4,*p5,*p6;
 	char ip1[25] = "\0";
 	char ip2[25] = "\0";
 	char ip3[25] = "\0";
@@ -820,7 +1000,9 @@ void  dispatch_APServerMsg(int apServer_index, char* buf)//处理apserver 发送
 	char ip6[25] = "\0";
 	int ret= -1;
 	int i = 0;
+	int j = 0;
 	int k = 0;
+	int status ;
 	//int template_a = 0,template_b = 0;
 	//int ap_a = 0,ap_b = 0;
 	template_operation_req template_req[max_template];
@@ -834,7 +1016,7 @@ void  dispatch_APServerMsg(int apServer_index, char* buf)//处理apserver 发送
 	case APSERVER_WEB_TEMPLATE_REPORT:
 		legalAPServerTimer[apServer_index].apServer_timer_flag = WEB_APSERVER_CONNECTING;
 		legalAPServerTimer[apServer_index].apServer_on_timer = web_apServer_configure_time;
-		decode_template_report(buf,&apTemplate[0]);
+		decode_template_report(buf,&apTemplate[0]);//解析apserver发送过来的模板
 		/*
 		char* p=buf;
 		char ssid[ssid_length];
@@ -955,7 +1137,7 @@ void  dispatch_APServerMsg(int apServer_index, char* buf)//处理apserver 发送
 			if (ret == 0)
 			{	
 				printf("AP_reporte insert success\n");
-				update_legalAP_add_o(&list[i]);
+				update_legalAP_add_o(&list[i]);//更新ap_list
 				//printf("mysql_query error is: %s\n", mysql_error(&mysql));
 			}
 			memset(ip1, 0, sizeof(ip1)); memset(ip2, 0, sizeof(ip2)); memset(ip3, 0, sizeof(ip3)); memset(ip4, 0, sizeof(ip4)); memset(ip5, 0, sizeof(ip5)); memset(ip6, 0, sizeof(ip6));
@@ -1005,7 +1187,7 @@ void  dispatch_APServerMsg(int apServer_index, char* buf)//处理apserver 发送
 			mysql_free_result(result);
 			break;
 	case APSERVER_WEB_TEMPLATE_MODIFY:
-		decode_template_modify_report(buf);
+		decode_template_modify_report(buf);//解析apserver发送过来的更改模板确认信息
 
 		//write result to database. update control set ack = %d where templateIndex = %d
 		while (Template_Ack[i].ack == '0')
@@ -1014,7 +1196,7 @@ void  dispatch_APServerMsg(int apServer_index, char* buf)//处理apserver 发送
 		}
 		if (i == buf[1])
 		{
-			snprintf(sql_insert, 512, "update control set state = 2 where content like '%%%d%%'", Template_Ack[--i].templateIndex);
+			snprintf(sql_insert, 512, "update control set state = 2 where content like '%%%d%%'", Template_Ack[--i].templateIndex);//更新control表数据
 			ret = mysql_query(conn, sql_insert);//将数据写入数据库中
 			if (ret != 0) {
 				printf("mysql_query error is: %s\n", mysql_error(&mysql));
@@ -1196,14 +1378,249 @@ void  dispatch_APServerMsg(int apServer_index, char* buf)//处理apserver 发送
 		}
 		//ap_status_assign_value(&ap_list[apServer_index],pp);
 		break;
+	case APSERVER_WEB_SoftWare_Upgrade:
+		legalAPServerTimer[apServer_index].apServer_timer_flag = WEB_APSERVER_SoftWare_Upgrade;
+		legalAPServerTimer[apServer_index].apServer_on_timer = web_apServer_upgrade_time;
+		decode_ap_upgrade_report(buf);
+		//write result to database
+		while (legalAP_upgrade_Ack[i].ack == '0')
+		{
+			i++;
+		}
+		if (i == buf[1])
+		{
+			snprintf(sql_insert, 512, "update control set state = 2 where content like '%%%s%%'", legalAP_upgrade_Ack[--i].AP_SN);
+			ret = mysql_query(conn, sql_insert);//将数据写入数据库中
+			if (ret != 0) 
+			{
+				printf("mysql_query error is: %s\n", mysql_error(&mysql));
+			}
+		}	
+		else
+		{
+			
+			for (j = 0; j < buf[1]; j++)
+			{
+                p1 = legalAP_upgrade_Ack[j].AP_SN;
+			    p2 = str;
+				while (*p1 != '\0') //  注意是'\0'
+					p1++;
 
+				while (*p2 != '\0')
+				{
+					*p1++ = *p2++; //已证明地址有改变
+					printf("%p  ", p2);
+
+				}
+			}
+			for (i = 0; i < buf[1]; i++)
+			{
+				memcpy(temp1 + (21 * i) , legalAP_upgrade_Ack[i].AP_SN, 21);
+					temp[k] = AP_Configure_Ack[i].ack;
+					k++;
+					temp[k] = ',';
+					k++;
+			}
+			temp[--k] = '\0';
+			p3 = temp1;
+			p4 = temp;
+			while (*p3 != '\0') //  注意是'\0'
+				p3++;
+
+			while (*p4 != '\0')
+			{
+				*p3++ = *p4++; //已证明地址有改变
+				printf("%p  ", p4);
+
+			}
+			snprintf(sql_insert, 512, "update control set state = 5,content = '%s' where content like '%%%s%%'",temp1, legalAP_upgrade_Ack[--i].AP_SN);
+			ret = mysql_query(conn, sql_insert);
+			if (ret != 0)
+			{
+				printf("mysql_query error is_1072:%s\n", mysql_error(&mysql));
+			}
+		}
+		legalAPServerTimer[apServer_index].apServer_on_timer_flag = 0;
+		break;
+	case APSERVER_WEB_Request_LogInfo://第二个操作SCp
+	    legalAPServerTimer[apServer_index].apServer_timer_flag = WEB_APSERVER_Request_LogInfo;
+		legalAPServerTimer[apServer_index].apServer_on_timer = web_apServer_upgrade_time;
+		decode_ap_upgrade_report(buf);//解析apserver发送过来的模板
+
+		/*apTemplate[i].ap_ssid.ssid  apTemplate[i].ap_ssid.ssid_psw  apTemplate[i].ap_login.login  apTemplate[i].ap_login.login_psw  apTemplate[i].options
+		apTemplate[i].DHCPOrStatic  apTemplate[i].NatOrBridge    apTemplate[i].pool.start  apTemplate[i].pool.end  apTemplate[i].ap_gateway.gateway变量*/
+		strcpy(ip1,legalAP_upgrade_Ack[0].Scp_Username);
+		strcpy(ip2,legalAP_upgrade_Ack[0].Scp_PassWord);
+		strcpy(ip3,legalAP_upgrade_Ack[0].Remote_FilePath);
+		while (legalAP_upgrade_Ack[i].ack == '0')
+		{
+			i++;
+		}
+		if (i == buf[1])
+		{   
+            for (j = 0; j < buf[1]; j++)
+			{
+                p1 = legalAP_upgrade_Ack[j].AP_SN;
+			    p2 = str;
+				while (*p1 != '\0') //  注意是'\0'
+					p1++;
+
+				while (*p2 != '\0')
+				{
+					*p1++ = *p2++; //已证明地址有改变
+					printf("%p  ", p2);
+
+				}
+			}
+			for (i = 0; i < buf[1]; i++)
+			{
+				memcpy(temp1+(21 * i) , legalAP_upgrade_Ack[i].AP_SN, 21);
+					temp[k] = AP_Configure_Ack[i].ack;
+					k++;
+					temp[k] = ',';
+					k++;
+			}
+			temp[k]='/';
+			k = k + 1;
+			temp[k]='v';
+			k = k + 1;
+			temp[k]='a';
+			k = k + 1;
+			temp[k]='r';
+			k = k + 1;
+			temp[k]='/';
+			k = k + 1;
+			temp[--k] = '\0';
+			p3 = temp1;
+			p4 = temp;
+			while (*p3 != '\0') //  注意是'\0'
+				p3++;
+
+			while (*p4 != '\0')
+			{
+				*p3++ = *p4++; //已证明地址有改变
+				printf("%p  ", p4);
+
+			}
+			p5 = temp1;
+			p6 = ip3;
+			while (*p5 != '\0') //  注意是'\0'
+				p5++;
+
+			while (*p6 != '\0')
+			{
+				*p5++ = *p6++; //已证明地址有改变
+				printf("%p  ", p4);
+
+			}
+			snprintf(sql_insert, 512, "update control set state = 2,content = '%s' where content like '%%%s%%'",temp1, legalAP_upgrade_Ack[--i].AP_SN);
+			snprintf(s, 512, "sshpass -p \"%s\" scp  -o StrictHostKeyChecking=no %s:%s /var/",ip2, ip1, ip3);//想插入的位置可按照自己意愿修改此处，且temp[k] 存的位置也修改
+			status = system(s);
+			if (-1 == status){ 
+			   printf("scp error");
+			}
+			if (!WIFEXITED(status)){
+				printf("scp error");
+			}
+			if (WEXITSTATUS(status)){
+				printf("scp error");
+			}
+			else{
+				printf("scp success");
+			}//?要不要
+			ret = mysql_query(conn, sql_insert);//将数据写入数据库中
+			if (ret != 0) 
+			{
+				printf("mysql_query error is: %s\n", mysql_error(&mysql));
+			}
+		}	
+		else
+		{
+			for (j = 0; j < buf[1]; j++)
+			{
+                p1 = legalAP_upgrade_Ack[j].AP_SN;
+			    p2 = str;
+				while (*p1 != '\0') //  注意是'\0'
+					p1++;
+
+				while (*p2 != '\0')
+				{
+					*p1++ = *p2++; //已证明地址有改变
+					printf("%p  ", p2);
+
+				}
+			}
+			for (i = 0; i < buf[1]; i++)
+			{
+				memcpy(temp1+(21 * i) , legalAP_upgrade_Ack[i].AP_SN, 21);
+					temp[k] = AP_Configure_Ack[i].ack;
+					k++;
+					temp[k] = ',';
+					k++;
+			}
+			temp[k]='/';
+			k = k + 1;
+			temp[k]='v';
+			k = k + 1;
+			temp[k]='a';
+			k = k + 1;
+			temp[k]='r';
+			k = k + 1;
+			temp[k]='/';
+			k = k + 1;
+			temp[--k] = '\0';
+			p3 = temp1;
+			p4 = temp;
+			while (*p3 != '\0') //  注意是'\0'
+				p3++;
+
+			while (*p4 != '\0')
+			{
+				*p3++ = *p4++; //已证明地址有改变
+				printf("%p  ", p4);
+
+			}
+			p5 = temp1;
+			p6 = ip3;
+			while (*p5 != '\0') //  注意是'\0'
+				p5++;
+
+			while (*p6 != '\0')
+			{
+				*p5++ = *p6++; //已证明地址有改变
+				printf("%p  ", p4);
+
+			}
+			snprintf(sql_insert, 512, "update control set state = 5,content = '%s' where content like '%%%s%%'",temp1, legalAP_upgrade_Ack[--i].AP_SN);
+			snprintf(s, 512, "scp %s  %s:/var/",ip3,ip1);
+		    status = system(s);
+			if (-1 == status){ 
+			   printf("scp error");
+			}
+			if (!WIFEXITED(status)){
+				printf("scp error");
+			}
+			if (WEXITSTATUS(status)){
+				printf("scp error");
+			}
+			else{
+				printf("scp success");
+			}//？要不要 ？
+			ret = mysql_query(conn, sql_insert);
+			if (ret != 0)
+			{
+				printf("mysql_query error is_1072:%s\n", mysql_error(&mysql));
+			}
+		}
+		legalAPServerTimer[apServer_index].apServer_on_timer_flag = 0;
+		break;
 	default:
 		log_error("Error: Unknown command from APServer = %d!\n", buf[0]);
 		break;
 		}
 
 
-	
+	  //这里添加一个收信息更新数据库的操作
 }
 
 //AP_Configuration_template apTemplate[max_template];
@@ -1307,7 +1724,6 @@ void update_legalAP_del(char* index)//删除ap后，更新数组ap_list
 	memset(&ap_list[i], 0, sizeof(AP));
 	legalAP[i] = 0;
 }
-
 void update_legalAP_add(legalAP_operation_req* AP_req)
 {
 	int i= 0;
@@ -1320,26 +1736,10 @@ void update_legalAP_add(legalAP_operation_req* AP_req)
 	strcpy(ap_list[i].AP_SN , AP_req->AP_SN);
 	template_assign_value((&ap_list[i].configure),(&AP_req->ap_template));
 }
-
-void update_legalAP_add_o(AP* ap)
-{
+void update_legalAP_add_o(AP* AP_list)
+{//添加ap后，更新数组ap_list
 	int i= 0;
 	for (i = 0; i < max_ap; i++)
-	{
-		if (legalAP[i] == 0)
-			break;
-	}
-	legalAP[i] = 1;
-	strcpy(ap_list[i].AP_SN , ap->AP_SN);
-	ap_configure_assign_value(&ap_list[i],ap);
-	ap_status_assign_value(&ap_list[i],ap);
-}
-
-
-/*
-void update_legalAP_add_o(AP* AP_list)//添加ap后，更新数组ap_list
-	int i= 0;
-	for (i= 0; i < max_ap; i++)
 	{
 		if (legalAP[i] == 0)
 			break;
@@ -1348,6 +1748,4 @@ void update_legalAP_add_o(AP* AP_list)//添加ap后，更新数组ap_list
 	strcpy(ap_list[i].AP_SN,AP_list->AP_SN);
 	ap_configure_assign_value(&ap_list[i], AP_list);
 	ap_status_assign_value(&ap_list[i], AP_list);
-}*/
-
-
+}

@@ -115,6 +115,8 @@
 
 
 			    <dd><a href="temporary.php">config</a></dd>
+                            <dd><a href="upgrade.php">upgrade</a></dd>
+                            <dd><a href="log.php">log</a></dd>
 
 							
 

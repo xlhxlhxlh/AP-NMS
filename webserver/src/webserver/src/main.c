@@ -39,7 +39,7 @@ MYSQL_RES *result1 = &r;
 template_operation_ack Template_Ack[max_template];
 legalAP_operation_ack legalAP_Ack[max_ap];
 AP_configuration_ack AP_Configure_Ack[max_ap];
-
+AP_upgrade_ack legalAP_upgrade_Ack[max_ap];
 
 //socket with APServer
 APServer_socket apServer_socket_list[max_ap_server];

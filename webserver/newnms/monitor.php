@@ -58,6 +58,9 @@
 			    <dd><a href="dubiao.php">AP</a></dd>
 			    <dd><a href="control.php">control</a></dd>
 			    <dd><a href="temporary.php">config</a></dd>
+                            <dd><a href="upgrade.php">upgrade</a></dd>
+                            <dd><a href="log.php">log</a></dd>
+
 							
                         </dl>
                     </li>
